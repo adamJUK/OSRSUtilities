@@ -10,14 +10,14 @@ import java.util.List;
 @RequestMapping("/api/equipment")
 public class EquipmentController {
 
-    private final EquipmentRepository repository;
+    private final EquipmentService service;
 
-    public EquipmentController(EquipmentRepository repository) {
-        this.repository = repository;
+    public EquipmentController(EquipmentService service) {
+        this.service = service;
     }
 
-    @GetMapping()
+    @GetMapping
     public List<Equipment> all() {
-        return repository.findAll();
+        return service.findAll();
     }
 }
