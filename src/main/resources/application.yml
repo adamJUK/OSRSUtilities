@@ -20,15 +20,9 @@ spring:
     enabled: true
     baseline-on-migrate: true
 
-  security:
-    oauth2:
-      client:
-        registration:
-          github:
-            client-name: Github
-            client-id: ${GITHUB_ID}
-            client-secret: ${GITHUB_SECRET}
-          google:
-            client-name: Google
-            client-id: ${GOOGLE_ID}
-            client-secret: ${GOOGLE_SECRET}
+keycloak:
+  auth-server-url: http://localhost:8080/auth
+  realm: OSRSUtilitiesKeycloak
+  resource: OSRSUtilities
+  public-client: true
+  principal-attribute: preferred_username
