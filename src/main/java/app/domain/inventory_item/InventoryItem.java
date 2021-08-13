@@ -1,22 +1,26 @@
-package app.equipment;
+package app.domain.inventory_item;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "equipment")
-public class Equipment {
+@Table(name = "inventory_items")
+@IdClass(InventoryItemId.class)
+public class InventoryItem {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column
     private int id;
 
+    @Id
     @Column
     private int slotNum;
 
     @Column
     private int itemId;
 
+    public InventoryItem() {
+
+    }
 
     public int getId() {
         return id;
@@ -26,15 +30,8 @@ public class Equipment {
         return slotNum;
     }
 
-    public void setSlotNum(int slotNum) {
-        this.slotNum = slotNum;
-    }
-
     public int getItemId() {
         return itemId;
     }
 
-    public void setItemId(int itemId) {
-        this.itemId = itemId;
-    }
 }
