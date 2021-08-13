@@ -1,9 +1,11 @@
-package app.loadout;
+package app.domain.loadout;
 
-import app.equipment.Equipment;
-import app.inventoryitems.InventoryItem;
+import app.domain.equipment.Equipment;
+import app.domain.inventory_item.InventoryItem;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Entity
@@ -18,21 +20,25 @@ public class Loadout {
     //TODO LOADOUT BELONGS TO ONE ACCOUNT DO THAT BIT HERE
 
     @Column
+    @NotBlank
     private String loadoutName;
 
     @Column
+    @JsonIgnore
     private int accountId;
 
-    @OneToMany
-    @JoinColumn(name = "id")
+    @Transient
     private List<Equipment> equipment;
 
-    @OneToMany
-    @JoinColumn(name = "id")
+   @Transient
     private List<InventoryItem> inventory;
 
     public int getAccountId() {
         return accountId;
+    }
+
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
     }
 
     public int getId() {
