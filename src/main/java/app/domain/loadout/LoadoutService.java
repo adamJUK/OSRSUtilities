@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -23,7 +24,7 @@ public class LoadoutService {
         this.inventoryItemService = inventoryItemService;
     }
 
-    public Loadout getLoadoutById(int id) {
+    public Loadout getById(int id) {
         var loadout = loadoutRepository
                 .findById(id)
                 .orElseThrow(() -> EntityNotFoundException.Of(Loadout.class, id));
@@ -33,9 +34,19 @@ public class LoadoutService {
         return loadout;
     }
 
+    public List<Loadout> getByAccountId(int accountId) {
+        List<Loadout> loadouts = loadoutRepository.findAllByAccountId(accountId);
+        for(Loadout loadout : loadouts) {
+            loadout.setInventory(inventoryItemService.getByLoadout(loadout));
+            loadout.setEquipment(equipmentService.getByLoadout(loadout));
+        }
+        return loadouts;
+
+    }
+
     @Transactional
     public Loadout update(Loadout loadout) {
-        var oldLoadout = getLoadoutById(loadout.getId());
+        var oldLoadout = getById(loadout.getId());
 
         loadout.setAccountId(oldLoadout.getAccountId());
         equipmentService.deleteAllByLoadout(loadout);
@@ -51,6 +62,11 @@ public class LoadoutService {
                 .collect(Collectors.toList())
         );
 
+        return loadoutRepository.save(loadout);
+    }
+
+    @Transactional
+    public Loadout create(Loadout loadout) {
         return loadoutRepository.save(loadout);
     }
 

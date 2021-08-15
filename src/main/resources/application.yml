@@ -21,7 +21,7 @@ spring:
     baseline-on-migrate: true
 keycloak:
   auth-server-url: http://localhost:8080/auth
-  realm: OSRSUtilitiesKeycloak
+  realm: OSRSUtilities
   resource: OSRSUtilities
   public-client: true
   principal-attribute: preferred_username
