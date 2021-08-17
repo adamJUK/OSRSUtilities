@@ -1,5 +1,6 @@
 package app.domain.loadout;
 
+import org.keycloak.representations.IDToken;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -15,15 +16,15 @@ public class LoadoutController {
         this.loadoutService = loadoutService;
     }
 
+    @GetMapping()
+    public List<Loadout> getLoadoutsByAccountId(IDToken idToken) {
+        return loadoutService.getByAccountId(idToken.getSubject());
+    }
+
     @GetMapping("/{id}")
     public Loadout getLoadoutById(@PathVariable int id) {
         //TODO: VALID ACCOUNT IS LOGGED IN AND OWNS/HAS PERMS LOADOUT.
         return loadoutService.getById(id);
-    }
-
-    @GetMapping("/account/{accountId}")
-    public List<Loadout> getLoadoutsByAccountId(@PathVariable int accountId) {
-        return loadoutService.getByAccountId(accountId);
     }
 
     @PutMapping("/update")

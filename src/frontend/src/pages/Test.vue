@@ -3,19 +3,12 @@
         <h1> Loadouts </h1>
         <section>
             <ul>
-
                 <li v-for="loadout in loadouts"
-
                     :key="loadout.id">
-
                     <div class="bg-OSRS-maroon text-OSRS-cream">
-
                         <label> {{ loadout.loadoutName }}</label>
-
                     </div>
-
                 </li>
-
             </ul>
         </section>
     </div>
@@ -33,6 +26,6 @@ export default {
     },
     async mounted() {
         this.loadouts = await getLoadouts();
-    }
+    },
 };
 </script>

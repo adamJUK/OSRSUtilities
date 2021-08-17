@@ -34,7 +34,7 @@ public class LoadoutService {
         return loadout;
     }
 
-    public List<Loadout> getByAccountId(int accountId) {
+    public List<Loadout> getByAccountId(String accountId) {
         List<Loadout> loadouts = loadoutRepository.findAllByAccountId(accountId);
         for(Loadout loadout : loadouts) {
             loadout.setInventory(inventoryItemService.getByLoadout(loadout));

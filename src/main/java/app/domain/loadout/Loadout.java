@@ -25,7 +25,7 @@ public class Loadout {
 
     @Column
     @JsonIgnore
-    private int accountId;
+    private String accountId;
 
     @Transient
     private List<Equipment> equipment;
@@ -33,11 +33,11 @@ public class Loadout {
    @Transient
     private List<InventoryItem> inventory;
 
-    public int getAccountId() {
+    public String getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(int accountId) {
+    public void setAccountId(String accountId) {
         this.accountId = accountId;
     }
 

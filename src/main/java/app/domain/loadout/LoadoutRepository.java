@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface LoadoutRepository extends JpaRepository<Loadout, Integer> {
 
-    List<Loadout> findAllByAccountId(int accountId);
+    List<Loadout> findAllByAccountId(String accountId);
 }

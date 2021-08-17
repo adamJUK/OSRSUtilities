@@ -13,6 +13,6 @@ async function deserializeLoadout(json) {
 }
 
 export async function getLoadouts() {
-        const response = await httpClient.get("account/23");
+        const response = await httpClient.get("/loadout/", {withCredentials:true});
         return Promise.all(response.data.map((loadout) => deserializeLoadout(loadout)));
 }
