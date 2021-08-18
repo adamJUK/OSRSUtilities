@@ -17,27 +17,25 @@ public class Loadout {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    //TODO LOADOUT BELONGS TO ONE ACCOUNT DO THAT BIT HERE
-
     @Column
     @NotBlank
     private String loadoutName;
 
     @Column
     @JsonIgnore
-    private int accountId;
+    private String accountId;
 
     @Transient
     private List<Equipment> equipment;
 
-   @Transient
+    @Transient
     private List<InventoryItem> inventory;
 
-    public int getAccountId() {
+    public String getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(int accountId) {
+    public void setAccountId(String accountId) {
         this.accountId = accountId;
     }
 
