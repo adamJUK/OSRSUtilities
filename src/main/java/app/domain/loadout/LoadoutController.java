@@ -7,7 +7,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/loadout/")
+@RequestMapping("api/loadout/")
 public class LoadoutController {
 
     private final LoadoutService loadoutService;
@@ -33,7 +33,7 @@ public class LoadoutController {
         return loadoutService.update(loadout);
     }
 
-    @PutMapping("/create")
+    @PostMapping("/create")
     public Loadout create(@RequestBody @Valid Loadout loadout) {
         return loadoutService.create(loadout);
     }

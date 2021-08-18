@@ -1,4 +1,7 @@
 <template>
+    <div>
+        <Navbar/>
+    </div>
     <div class="bg-OSRS-cream">
         <h1> Loadouts </h1>
         <section>
@@ -15,17 +18,12 @@
 </template>
 
 <script>
-import { getLoadouts } from "@/config/api/loadouts.api";
+import Navbar from "@/components/navbar/Navbar";
 
 export default {
     name: "Test",
-    data() {
-        return {
-            loadouts: [],
-        };
-    },
-    async mounted() {
-        this.loadouts = await getLoadouts();
+    components: {
+      Navbar,
     },
 };
 </script>

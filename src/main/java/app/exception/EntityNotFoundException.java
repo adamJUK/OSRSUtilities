@@ -14,5 +14,4 @@ public class EntityNotFoundException extends RuntimeException {
         return new EntityNotFoundException(clazz.getSimpleName() + " with id " + id + " does not exist.");
     }
 
-
 }

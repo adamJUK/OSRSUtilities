@@ -2,6 +2,7 @@ import { hasPropertyOrDefault } from "@/utils/hasPropertyOrDefault";
 
 export default class Loadout {
     constructor(config) {
+        this._accountId = hasPropertyOrDefault(config, "accountId", "");
         this._equipment = hasPropertyOrDefault(config, "equipment", {});
         this._id = hasPropertyOrDefault(config, "id", "");
         this._inventory = hasPropertyOrDefault(config, "inventory", {});
@@ -15,6 +16,10 @@ export default class Loadout {
 
     get loadoutName() {
         return this._loadoutName;
+    }
+
+    get accountId() {
+        return this._accountId;
     }
 
     get equipment() {

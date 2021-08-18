@@ -17,8 +17,6 @@ public class Loadout {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    //TODO LOADOUT BELONGS TO ONE ACCOUNT DO THAT BIT HERE
-
     @Column
     @NotBlank
     private String loadoutName;
@@ -30,7 +28,7 @@ public class Loadout {
     @Transient
     private List<Equipment> equipment;
 
-   @Transient
+    @Transient
     private List<InventoryItem> inventory;
 
     public String getAccountId() {
